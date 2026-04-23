@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>ERD – Perpustakaan Digital</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; padding: 32px; }
+  h1 { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 4px; }
+  .sub { text-align: center; color: #64748b; font-size: 13px; margin-bottom: 32px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+  .entity { background: #fff; border: 2px solid #1e3a5f; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .entity-header { background: #1e3a5f; color: #fff; padding: 10px 16px; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .entity-header span { background: #f59e0b; color: #1e3a5f; font-size: 11px; padding: 2px 8px; border-radius: 99px; font-weight: 600; }
+  .field { display: flex; justify-content: space-between; align-items: center; padding: 7px 16px; border-bottom: 1px solid #f1f5f9; font-size: 13px; }
+  .field:last-child { border-bottom: none; }
+  .field.pk { background: #fffbeb; font-weight: 600; }
+  .field.fk { background: #eff6ff; }
+  .field-name { display: flex; align-items: center; gap: 6px; }
+  .badge { font-size: 10px; padding: 1px 6px; border-radius: 99px; font-weight: 700; }
+  .badge.pk { background: #f59e0b; color: #78350f; }
+  .badge.fk { background: #3b82f6; color: #fff; }
+  .badge.uk { background: #10b981; color: #fff; }
+  .type { color: #94a3b8; font-size: 11px; font-style: italic; }
+  .rel-section { background: #fff; border-radius: 12px; padding: 24px; border: 1px solid #e2e8f0; margin-bottom: 32px; }
+  .rel-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #1e3a5f; border-bottom: 2px solid #f59e0b; padding-bottom: 8px; }
+  .rel-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .rel-table th { background: #f1f5f9; padding: 8px 12px; text-align: left; font-weight: 600; color: #475569; }
+  .rel-table td { padding: 8px 12px; border-bottom: 1px solid #f1f5f9; }
+  .rel-table tr:last-child td { border: none; }
+  .one { color: #1e3a5f; font-weight: 700; }
+  .many { color: #f59e0b; font-weight: 700; }
+  .ket-section { background: #fff; border-radius: 12px; padding: 20px 24px; border: 1px solid #e2e8f0; font-size: 13px; }
+  .ket-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #1e3a5f; }
+  .ket-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ket-item { display: flex; align-items: center; gap: 8px; }
+  .dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+
+  @media print {
+    body { padding: 16px; }
+    .grid { grid-template-columns: repeat(3,1fr); gap: 16px; }
+  }
+</style>
+</head>
+<body>
+<h1>📊 Entity Relationship Diagram (ERD)</h1>
+<p class="sub">Sistem Perpustakaan Digital Sekolah &nbsp;|&nbsp; UKK RPL 2025/2026 &nbsp;|&nbsp; Kode: KM25.4.1.1</p>
+
+<!-- ENTITIES -->
+<div class="grid">
+
+  <!-- USERS -->
+  <div class="entity">
+    <div class="entity-header">👤 USERS <span>Tabel Pengguna</span></div>
+    <div class="field pk"><div class="field-name"><span class="badge pk">PK</span> id</div><span class="type">BIGINT</span></div>
+    <div class="field"><div class="field-name"><span class="badge uk">UK</span> username</div><span class="type">VARCHAR(50)</span></div>
+    <div class="field"><div class="field-name"><span class="badge uk">UK</span> email</div><span class="type">VARCHAR(100)</span></div>
+    <div class="field"><div class="field-name">password</div><span class="type">VARCHAR(255)</span></div>
+    <div class="field"><div class="field-name">name</div><span class="type">VARCHAR(100)</span></div>
+    <div class="field"><div class="field-name">role</div><span class="type">ENUM(admin,siswa)</span></div>
+    <div class="field"><div class="field-name"><span class="badge uk">UK</span> nis</div><span class="type">VARCHAR(20)</span></div>
+    <div class="field"><div class="field-name">kelas</div><span class="type">VARCHAR(20)</span></div>
+    <div class="field"><div class="field-name">no_hp</div><span class="type">VARCHAR(20)</span></div>
+    <div class="field"><div class="field-name">alamat</div><span class="type">TEXT</span></div>
+    <div class="field"><div class="field-name">foto</div><span class="type">VARCHAR(255)</span></div>
+    <div class="field"><div class="field-name">is_active</div><span class="type">TINYINT(1)</span></div>
+    <div class="field"><div class="field-name">created_at</div><span class="type">TIMESTAMP</span></div>
+    <div class="field"><div class="field-name">updated_at</div><span class="type">TIMESTAMP</span></div>
+  </div>
+
+  <!-- KATEGORIS -->
+  <div class="entity">
+    <div class="entity-header">🏷️ KATEGORIS <span>Kategori Buku</span></div>
+    <div class="field pk"><div class="field-name"><span class="badge pk">PK</span> id</div><span class="type">BIGINT</span></div>
+    <div class="field"><div class="field-name">nama_kategori</div><span class="type">VARCHAR(100)</span></div>
+    <div class="field"><div class="field-name">keterangan</div><span class="type">TEXT</span></div>
+    <div class="field"><div class="field-name">created_at</div><span class="type">TIMESTAMP</span></div>
+    <div class="field"><div class="field-name">updated_at</div><span class="type">TIMESTAMP</span></div>
+  </div>
+
+  <!-- BUKUS -->
+  <div class="entity">
+    <div class="entity-header">📚 BUKUS <span>Data Buku</span></div>
+    <div class="field pk"><div class="field-name"><span class="badge pk">PK</span> id</div><span class="type">BIGINT</span></div>
+    <div class="field"><div class="field-name"><span class="badge uk">UK</span> kode_buku</div><span class="type">VARCHAR(30)</span></div>
+    <div class="field"><div class="field-name">judul</div><span class="type">VARCHAR(200)</span></div>
+    <div class="field"><div class="field-name">pengarang</div><span class="type">VARCHAR(100)</span></div>
+    <div class="field"><div class="field-name">penerbit</div><span class="type">VARCHAR(100)</span></div>
+    <div class="field"><div class="field-name">tahun_terbit</div><span class="type">YEAR</span></div>
+    <div class="field fk"><div class="field-name"><span class="badge fk">FK</span> kategori_id</div><span class="type">BIGINT → kategoris.id</span></div>
+    <div class="field"><div class="field-name">stok</div><span class="type">INT</span></div>
+    <div class="field"><div class="field-name">stok_tersedia</div><span class="type">INT</span></div>
+    <div class="field"><div class="field-name">isbn</div><span class="type">VARCHAR(30)</span></div>
+    <div class="field"><div class="field-name">deskripsi</div><span class="type">TEXT</span></div>
+    <div class="field"><div class="field-name">sampul</div><span class="type">VARCHAR(255)</span></div>
+    <div class="field"><div class="field-name">rak</div><span class="type">VARCHAR(20)</span></div>
+    <div class="field"><div class="field-name">created_at</div><span class="type">TIMESTAMP</span></div>
+    <div class="field"><div class="field-name">updated_at</div><span class="type">TIMESTAMP</span></div>
+  </div>
+
+  <!-- PINJAMS -->
+  <div class="entity" style="grid-column: 1 / span 2;">
+    <div class="entity-header">🔄 PINJAMS <span>Transaksi Peminjaman</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;">
+      <div>
+        <div class="field pk"><div class="field-name"><span class="badge pk">PK</span> id</div><span class="type">BIGINT</span></div>
+        <div class="field"><div class="field-name"><span class="badge uk">UK</span> kode_pinjam</div><span class="type">VARCHAR(30)</span></div>
+        <div class="field fk"><div class="field-name"><span class="badge fk">FK</span> user_id</div><span class="type">BIGINT → users.id</span></div>
+        <div class="field fk"><div class="field-name"><span class="badge fk">FK</span> buku_id</div><span class="type">BIGINT → bukus.id</span></div>
+        <div class="field fk"><div class="field-name"><span class="badge fk">FK</span> admin_id</div><span class="type">BIGINT → users.id</span></div>
+        <div class="field"><div class="field-name">tgl_pinjam</div><span class="type">DATE</span></div>
+        <div class="field"><div class="field-name">tgl_kembali_rencana</div><span class="type">DATE</span></div>
+      </div>
+      <div>
+        <div class="field"><div class="field-name">tgl_kembali_aktual</div><span class="type">DATE NULL</span></div>
+        <div class="field"><div class="field-name">status</div><span class="type">ENUM(dipinjam, dikembalikan, terlambat)</span></div>
+        <div class="field"><div class="field-name">denda</div><span class="type">DECIMAL(10,2)</span></div>
+        <div class="field"><div class="field-name">keterangan</div><span class="type">TEXT</span></div>
+        <div class="field"><div class="field-name">created_at</div><span class="type">TIMESTAMP</span></div>
+        <div class="field"><div class="field-name">updated_at</div><span class="type">TIMESTAMP</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KETERANGAN -->
+  <div class="ket-section" style="grid-column: 3;">
+    <h2>🔑 Keterangan Simbol</h2>
+    <div class="ket-grid">
+      <div class="ket-item"><div class="dot" style="background:#f59e0b"></div><strong>PK</strong> = Primary Key</div>
+      <div class="ket-item"><div class="dot" style="background:#3b82f6"></div><strong>FK</strong> = Foreign Key</div>
+      <div class="ket-item"><div class="dot" style="background:#10b981"></div><strong>UK</strong> = Unique Key</div>
+      <div class="ket-item"><div class="dot" style="background:#94a3b8"></div><em>NULL</em> = Opsional</div>
+    </div>
+    <div style="margin-top:16px;font-size:12px;color:#64748b;line-height:1.7;">
+      <p><strong>Relasi antar tabel:</strong></p>
+      <p>• users ←→ pinjams (1:N)</p>
+      <p>• bukus ←→ pinjams (1:N)</p>
+      <p>• kategoris ←→ bukus (1:N)</p>
+      <p>• users (admin) ←→ pinjams (1:N via admin_id)</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- RELASI TABLE -->
+<div class="rel-section">
+  <h2>🔗 Relasi Antar Tabel</h2>
+  <table class="rel-table">
+    <thead>
+      <tr>
+        <th>Tabel Asal</th>
+        <th>Kardinalitas</th>
+        <th>Tabel Tujuan</th>
+        <th>Foreign Key</th>
+        <th>Aturan Hapus</th>
+        <th>Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>kategoris</strong></td>
+        <td><span class="one">1</span> : <span class="many">N</span></td>
+        <td><strong>bukus</strong></td>
+        <td>bukus.kategori_id</td>
+        <td>RESTRICT</td>
+        <td>Satu kategori memiliki banyak buku</td>
+      </tr>
+      <tr>
+        <td><strong>users</strong> (siswa)</td>
+        <td><span class="one">1</span> : <span class="many">N</span></td>
+        <td><strong>pinjams</strong></td>
+        <td>pinjams.user_id</td>
+        <td>RESTRICT</td>
+        <td>Satu siswa bisa memiliki banyak transaksi pinjam</td>
+      </tr>
+      <tr>
+        <td><strong>bukus</strong></td>
+        <td><span class="one">1</span> : <span class="many">N</span></td>
+        <td><strong>pinjams</strong></td>
+        <td>pinjams.buku_id</td>
+        <td>RESTRICT</td>
+        <td>Satu buku bisa dipinjam berkali-kali (riwayat)</td>
+      </tr>
+      <tr>
+        <td><strong>users</strong> (admin)</td>
+        <td><span class="one">1</span> : <span class="many">N</span></td>
+        <td><strong>pinjams</strong></td>
+        <td>pinjams.admin_id</td>
+        <td>SET NULL</td>
+        <td>Admin yang memproses pengembalian (opsional)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p style="text-align:center;color:#94a3b8;font-size:12px;margin-top:24px;">
+  Dibuat untuk keperluan UKK RPL 2025/2026 &nbsp;|&nbsp; Perpustakaan Digital SMKN 1 &nbsp;|&nbsp; © 2025
+</p>
+</body>
+</html>

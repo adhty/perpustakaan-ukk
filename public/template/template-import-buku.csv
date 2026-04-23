@@ -1,0 +1,4 @@
+﻿kode_buku,judul,pengarang,penerbit,tahun_terbit,stok,kategori,isbn,rak,deskripsi
+BK100,Contoh Buku Pemrograman,Andi Developer,Informatika,2024,10,Pemrograman,978-602-0000-99-1,A1,Buku contoh import sistem
+BK101,Contoh Buku Matematika,Sri Matematika,Erlangga,2023,8,Matematika,978-602-0000-99-2,B2,Buku contoh import sistem
+BK102,Contoh Buku Fiksi,Rara Penulis,Bentang Pustaka,2022,5,Fiksi,978-602-0000-99-3,F3,Buku contoh import sistem

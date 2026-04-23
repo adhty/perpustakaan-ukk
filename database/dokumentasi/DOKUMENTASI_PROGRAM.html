@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Dokumentasi Program – Perpustakaan Digital</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 32px; color: #1e293b; line-height: 1.7; font-size: 14px; }
+  h1 { font-size: 24px; font-weight: 800; text-align: center; color: #1e3a5f; margin-bottom: 4px; }
+  .kop { text-align: center; border-bottom: 3px double #1e3a5f; padding-bottom: 20px; margin-bottom: 32px; }
+  .kop p { color: #64748b; font-size: 13px; margin: 2px 0; }
+  h2 { font-size: 16px; font-weight: 700; color: #fff; background: #1e3a5f; padding: 10px 16px; border-radius: 8px; margin: 32px 0 16px; display: flex; align-items: center; gap: 8px; }
+  h3 { font-size: 14px; font-weight: 700; color: #1e3a5f; margin: 20px 0 8px; border-left: 4px solid #f59e0b; padding-left: 12px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 24px; font-size: 13px; }
+  th { background: #1e3a5f; color: #fff; padding: 9px 12px; text-align: left; }
+  td { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12px; color: #0f172a; }
+  pre { background: #0f172a; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 12px; margin: 8px 0 16px; }
+  .box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 12px 0; }
+  .box.green { background: #f0fdf4; border-color: #bbf7d0; }
+  .box.red { background: #fff1f2; border-color: #fecdd3; }
+  .box.yellow { background: #fffbeb; border-color: #fde68a; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 11px; font-weight: 700; }
+  .badge.get { background: #dcfce7; color: #166534; }
+  .badge.post { background: #dbeafe; color: #1e40af; }
+  .badge.put { background: #fef9c3; color: #854d0e; }
+  .badge.delete { background: #fee2e2; color: #991b1b; }
+  ul, ol { padding-left: 20px; }
+  li { margin: 4px 0; }
+  .sign { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .sign-box { text-align: center; }
+  .sign-line { border-top: 1px solid #1e3a5f; margin-top: 60px; padding-top: 8px; font-weight: 700; }
+  @media print { body { padding: 20px; } }
+</style>
+</head>
+<body>
+
+<!-- KOP -->
+<div class="kop">
+  <h1>DOKUMENTASI PROGRAM</h1>
+  <p style="font-size:15px;font-weight:600;color:#1e3a5f;">Pengembangan Aplikasi Peminjaman Buku</p>
+  <p>Perpustakaan Digital Sekolah Menengah Kejuruan</p>
+  <p>Uji Kompetensi Keahlian (UKK) – Rekayasa Perangkat Lunak</p>
+  <p>Tahun Pelajaran 2025/2026 &nbsp;|&nbsp; Kode Soal: KM25.4.1.1</p>
+</div>
+
+<!-- I. DESKRIPSI PROGRAM -->
+<h2>📋 I. DESKRIPSI PROGRAM</h2>
+
+<h3>1.1 Gambaran Umum</h3>
+<p>
+  Aplikasi <strong>Perpustakaan Digital Sekolah</strong> adalah sistem manajemen peminjaman buku berbasis web yang
+  dikembangkan menggunakan framework <strong>Laravel 11</strong> (PHP) dengan database <strong>MySQL</strong>.
+  Aplikasi ini berjalan secara lokal (localhost) tanpa memerlukan koneksi internet, dan dirancang untuk
+  memudahkan proses peminjaman dan pendataan buku di lingkungan sekolah.
+</p>
+
+<h3>1.2 Spesifikasi Teknis</h3>
+<div class="box">
+  <table style="margin:0;">
+    <thead><tr><th>Komponen</th><th>Teknologi</th><th>Versi</th></tr></thead>
+    <tbody>
+      <tr><td>Backend Framework</td><td>Laravel</td><td>11.x</td></tr>
+      <tr><td>Bahasa Pemrograman</td><td>PHP</td><td>8.2+</td></tr>
+      <tr><td>Database</td><td>MySQL</td><td>8.0+</td></tr>
+      <tr><td>Frontend Styling</td><td>Tailwind CSS</td><td>3.x (CDN)</td></tr>
+      <tr><td>Grafik / Chart</td><td>Chart.js</td><td>4.x (CDN)</td></tr>
+      <tr><td>Ikon</td><td>Font Awesome</td><td>6.5 (CDN)</td></tr>
+      <tr><td>Web Server</td><td>PHP Built-in / Apache</td><td>–</td></tr>
+      <tr><td>Arsitektur</td><td>MVC (Model-View-Controller)</td><td>–</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>1.3 Fitur Utama</h3>
+<table>
+  <thead><tr><th>Fitur</th><th>Admin</th><th>Siswa</th><th>Keterangan</th></tr></thead>
+  <tbody>
+    <tr><td>Login & Logout</td><td>✅</td><td>✅</td><td>Autentikasi berbasis session</td></tr>
+    <tr><td>Registrasi Akun</td><td>–</td><td>✅</td><td>Siswa bisa daftar mandiri</td></tr>
+    <tr><td>Dashboard</td><td>✅</td><td>✅</td><td>Ringkasan statistik & grafik</td></tr>
+    <tr><td>CRUD Data Buku</td><td>✅</td><td>–</td><td>Tambah, lihat, edit, hapus buku</td></tr>
+    <tr><td>CRUD Kelola Anggota</td><td>✅</td><td>–</td><td>Manajemen data siswa</td></tr>
+    <tr><td>CRUD Transaksi</td><td>✅</td><td>–</td><td>Admin bisa buat & proses transaksi</td></tr>
+    <tr><td>Pinjam Buku</td><td>–</td><td>✅</td><td>Siswa pilih & pinjam buku tersedia</td></tr>
+    <tr><td>Kembalikan Buku</td><td>✅</td><td>✅</td><td>Proses pengembalian dari kedua sisi</td></tr>
+    <tr><td>Riwayat Peminjaman</td><td>✅</td><td>✅</td><td>Histori lengkap semua transaksi</td></tr>
+    <tr><td>Pencarian</td><td>✅</td><td>✅</td><td>Cari buku berdasarkan judul/pengarang/kode</td></tr>
+    <tr><td>Laporan & Cetak</td><td>✅</td><td>–</td><td>Filter bulan, ekspor cetak</td></tr>
+    <tr><td>Denda Otomatis</td><td>✅</td><td>✅</td><td>Rp 1.000/hari keterlambatan</td></tr>
+    <tr><td>Grafik Peminjaman</td><td>✅</td><td>–</td><td>Bar chart 6 bulan terakhir</td></tr>
+  </tbody>
+</table>
+
+<!-- II. DOKUMENTASI FUNGSI / PROSEDUR -->
+<h2>⚙️ II. DOKUMENTASI FUNGSI / PROSEDUR</h2>
+
+<h3>2.1 AuthController</h3>
+<table>
+  <thead><tr><th>Method</th><th>HTTP</th><th>Fungsi</th><th>Parameter</th><th>Return</th></tr></thead>
+  <tbody>
+    <tr><td><code>showLogin()</code></td><td><span class="badge get">GET</span></td><td>Menampilkan halaman form login</td><td>–</td><td>View <code>auth.login</code></td></tr>
+    <tr><td><code>login(Request $req)</code></td><td><span class="badge post">POST</span></td><td>Memvalidasi & memproses login. Support login via username atau email</td><td>username, password, remember</td><td>Redirect ke dashboard sesuai role</td></tr>
+    <tr><td><code>showRegister()</code></td><td><span class="badge get">GET</span></td><td>Menampilkan form registrasi siswa</td><td>–</td><td>View <code>auth.register</code></td></tr>
+    <tr><td><code>register(Request $req)</code></td><td><span class="badge post">POST</span></td><td>Memvalidasi & menyimpan akun siswa baru, lalu auto-login</td><td>name, username, email, nis, kelas, no_hp, password</td><td>Redirect ke dashboard siswa</td></tr>
+    <tr><td><code>logout(Request $req)</code></td><td><span class="badge post">POST</span></td><td>Menghapus session, invalidate token, logout user</td><td>–</td><td>Redirect ke halaman login</td></tr>
+  </tbody>
+</table>
+
+<h3>2.2 Admin\BukuController</h3>
+<table>
+  <thead><tr><th>Method</th><th>HTTP</th><th>Fungsi</th></tr></thead>
+  <tbody>
+    <tr><td><code>index(Request $req)</code></td><td><span class="badge get">GET</span></td><td>Menampilkan daftar buku dengan fitur filter pencarian dan kategori. Menggunakan paginasi 10 data per halaman.</td></tr>
+    <tr><td><code>create()</code></td><td><span class="badge get">GET</span></td><td>Menampilkan form tambah buku baru beserta daftar kategori.</td></tr>
+    <tr><td><code>store(Request $req)</code></td><td><span class="badge post">POST</span></td><td>Memvalidasi input, menyimpan data buku + upload sampul ke storage. stok_tersedia otomatis = stok.</td></tr>
+    <tr><td><code>show(Buku $buku)</code></td><td><span class="badge get">GET</span></td><td>Menampilkan detail buku beserta riwayat peminjaman buku tersebut.</td></tr>
+    <tr><td><code>edit(Buku $buku)</code></td><td><span class="badge get">GET</span></td><td>Menampilkan form edit dengan data buku yang sudah terisi (old value).</td></tr>
+    <tr><td><code>update(Request $req, Buku $buku)</code></td><td><span class="badge put">PUT</span></td><td>Memperbarui data buku. Menyesuaikan stok_tersedia secara proporsional jika stok total berubah.</td></tr>
+    <tr><td><code>destroy(Buku $buku)</code></td><td><span class="badge delete">DELETE</span></td><td>Menghapus buku dari database. Menolak jika buku masih dalam status dipinjam.</td></tr>
+  </tbody>
+</table>
+
+<h3>2.3 Admin\TransaksiController</h3>
+<table>
+  <thead><tr><th>Method</th><th>HTTP</th><th>Fungsi</th></tr></thead>
+  <tbody>
+    <tr><td><code>store(Request $req)</code></td><td><span class="badge post">POST</span></td><td>Membuat transaksi peminjaman baru. Validasi: stok tersedia > 0, belum pinjam buku sama, maks. 3 buku aktif. Dekrement stok_tersedia.</td></tr>
+    <tr><td><code>kembalikan(Request, int $id)</code></td><td><span class="badge post">POST</span></td><td>Memproses pengembalian buku. Hitung denda otomatis (Rp 1.000/hari). Update status, tgl_kembali_aktual, increment stok_tersedia.</td></tr>
+    <tr><td><code>laporan(Request $req)</code></td><td><span class="badge get">GET</span></td><td>Menampilkan laporan transaksi dengan filter bulan dan status. Menghitung total denda keseluruhan.</td></tr>
+  </tbody>
+</table>
+
+<h3>2.4 Siswa\PeminjamanController</h3>
+<table>
+  <thead><tr><th>Method</th><th>HTTP</th><th>Fungsi</th></tr></thead>
+  <tbody>
+    <tr><td><code>index(Request $req)</code></td><td><span class="badge get">GET</span></td><td>Menampilkan katalog buku yang tersedia (stok > 0). Terdapat filter pencarian & kategori. Menandai buku yang sedang dipinjam user.</td></tr>
+    <tr><td><code>store(Request $req)</code></td><td><span class="badge post">POST</span></td><td>Memproses permintaan pinjam buku oleh siswa. Durasi pinjam otomatis 7 hari. Validasi: stok, duplikat, dan batas 3 buku.</td></tr>
+    <tr><td><code>riwayat()</code></td><td><span class="badge get">GET</span></td><td>Menampilkan seluruh riwayat peminjaman siswa yang sedang login.</td></tr>
+  </tbody>
+</table>
+
+<h3>2.5 Model – Fungsi Khusus</h3>
+<table>
+  <thead><tr><th>Model</th><th>Method / Accessor</th><th>Keterangan</th></tr></thead>
+  <tbody>
+    <tr><td>Pinjam</td><td><code>generateKode()</code> <em>(static)</em></td><td>Generate kode unik format <code>PJM-YYYYMMDD-0001</code> berdasarkan tanggal dan urutan hari ini</td></tr>
+    <tr><td>Pinjam</td><td><code>getDendaHitungAttribute()</code></td><td>Accessor: menghitung estimasi denda real-time berdasarkan keterlambatan hari ini</td></tr>
+    <tr><td>Pinjam</td><td><code>getTerlambatAttribute()</code></td><td>Accessor boolean: true jika status dipinjam dan melewati batas kembali</td></tr>
+    <tr><td>Pinjam</td><td><code>getSisaHariAttribute()</code></td><td>Accessor: menghitung sisa hari sebelum batas pengembalian (negatif = terlambat)</td></tr>
+    <tr><td>Buku</td><td><code>scopeSearch($query, $kw)</code></td><td>Query scope untuk pencarian buku berdasarkan judul, pengarang, kode, atau ISBN</td></tr>
+    <tr><td>Buku</td><td><code>getTersediaAttribute()</code></td><td>Accessor boolean: true jika stok_tersedia > 0</td></tr>
+    <tr><td>User</td><td><code>aktivePinjam()</code></td><td>Relasi: mengembalikan peminjaman aktif (status = dipinjam) milik user</td></tr>
+  </tbody>
+</table>
+
+<h3>2.6 Middleware – RoleMiddleware</h3>
+<div class="box">
+  <p><strong>Fungsi:</strong> Membatasi akses halaman berdasarkan role pengguna (admin/siswa).</p>
+  <p><strong>Cara kerja:</strong></p>
+  <ol>
+    <li>Cek apakah user sudah login (<code>Auth::check()</code>). Jika belum, redirect ke login.</li>
+    <li>Bandingkan <code>Auth::user()->role</code> dengan parameter role yang diizinkan.</li>
+    <li>Jika tidak sesuai, lempar HTTP 403 Forbidden.</li>
+    <li>Jika sesuai, lanjutkan ke handler berikutnya (<code>$next($request)</code>).</li>
+  </ol>
+  <p><strong>Penggunaan:</strong> <code>Route::middleware(['auth', 'role:admin'])</code> atau <code>role:siswa</code></p>
+</div>
+
+<!-- III. DEBUGGING LOG -->
+<h2>🐛 III. DOKUMENTASI DEBUGGING</h2>
+
+<table>
+  <thead><tr><th>No</th><th>Masalah / Error</th><th>Lokasi</th><th>Penyebab</th><th>Solusi</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Route [role] not defined</td>
+      <td><code>bootstrap/app.php</code></td>
+      <td>Middleware alias 'role' belum didaftarkan ke Laravel</td>
+      <td>Tambahkan <code>$middleware->alias(['role' => RoleMiddleware::class])</code> di <code>withMiddleware()</code></td>
+      <td>✅ Fixed</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>SQLSTATE: Table 'users' doesn't exist</td>
+      <td>Migration</td>
+      <td>Migration belum dijalankan atau urutan migration salah</td>
+      <td>Jalankan <code>php artisan migrate</code> atau <code>php artisan migrate:fresh --seed</code></td>
+      <td>✅ Fixed</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>419 Page Expired saat submit form</td>
+      <td>Semua form POST</td>
+      <td>CSRF token tidak disertakan di form</td>
+      <td>Pastikan setiap form memiliki <code>@csrf</code> di awal tag &lt;form&gt;</td>
+      <td>✅ Fixed</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Storage image tidak tampil</td>
+      <td>BukuController / view buku</td>
+      <td>Symbolic link storage belum dibuat</td>
+      <td>Jalankan <code>php artisan storage:link</code> sekali saat setup</td>
+      <td>✅ Fixed</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Denda tidak terhitung saat pengembalian</td>
+      <td><code>TransaksiController::kembalikan()</code></td>
+      <td>Perbandingan tanggal tidak menggunakan objek Carbon</td>
+      <td>Gunakan <code>Carbon::today()->gt($pinjam->tgl_kembali_rencana)</code> dan <code>diffInDays()</code></td>
+      <td>✅ Fixed</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Stok tersedia minus setelah hapus transaksi</td>
+      <td><code>TransaksiController::destroy()</code></td>
+      <td>Hapus transaksi tidak mengembalikan stok buku</td>
+      <td>Tambahkan <code>if ($t->status === 'dipinjam') $buku->increment('stok_tersedia')</code> sebelum delete</td>
+      <td>✅ Fixed</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Siswa bisa pinjam buku yang sama dua kali</td>
+      <td><code>PeminjamanController::store()</code></td>
+      <td>Tidak ada pengecekan duplikat peminjaman aktif</td>
+      <td>Tambahkan query cek: <code>where('user_id',...)->where('buku_id',...)->where('status','dipinjam')</code></td>
+      <td>✅ Fixed</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>update() gagal untuk stok buku</td>
+      <td><code>BukuController::update()</code></td>
+      <td>Saat stok diubah, stok_tersedia tidak ikut disesuaikan</td>
+      <td>Hitung selisih: <code>$selisih = $validated['stok'] - $buku->stok</code>, lalu sesuaikan stok_tersedia</td>
+      <td>✅ Fixed</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- IV. LAPORAN EVALUASI -->
+<h2>📊 IV. LAPORAN EVALUASI SINGKAT</h2>
+
+<h3>4.1 Hasil Pengujian Fungsional</h3>
+<table>
+  <thead><tr><th>No</th><th>Skenario Pengujian</th><th>Input</th><th>Output yang Diharapkan</th><th>Hasil</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Login admin dengan username & password benar</td><td>admin / password</td><td>Redirect ke dashboard admin</td><td>✅ Berhasil</td></tr>
+    <tr><td>2</td><td>Login siswa dengan kredensial salah</td><td>xxx / wrongpass</td><td>Pesan error, tidak masuk</td><td>✅ Berhasil</td></tr>
+    <tr><td>3</td><td>Siswa registrasi dengan NIS yang sudah ada</td><td>NIS duplikat</td><td>Error validasi "NIS sudah terdaftar"</td><td>✅ Berhasil</td></tr>
+    <tr><td>4</td><td>Admin tambah buku baru</td><td>Data buku lengkap</td><td>Buku tersimpan, stok tersedia = stok</td><td>✅ Berhasil</td></tr>
+    <tr><td>5</td><td>Admin hapus buku yang sedang dipinjam</td><td>Buku dengan pinjam aktif</td><td>Error "tidak dapat dihapus"</td><td>✅ Berhasil</td></tr>
+    <tr><td>6</td><td>Siswa pinjam buku tersedia</td><td>Pilih buku stok > 0</td><td>Transaksi terbuat, stok berkurang 1</td><td>✅ Berhasil</td></tr>
+    <tr><td>7</td><td>Siswa pinjam buku yang sudah dipinjamnya</td><td>Buku yang sudah aktif dipinjam</td><td>Error "sudah meminjam buku ini"</td><td>✅ Berhasil</td></tr>
+    <tr><td>8</td><td>Siswa pinjam melebihi batas 3 buku</td><td>Pinjam ke-4</td><td>Error "maksimal 3 buku"</td><td>✅ Berhasil</td></tr>
+    <tr><td>9</td><td>Proses pengembalian tepat waktu</td><td>Kembalikan sebelum batas</td><td>Status dikembalikan, denda = 0</td><td>✅ Berhasil</td></tr>
+    <tr><td>10</td><td>Proses pengembalian terlambat 3 hari</td><td>Kembalikan 3 hari setelah batas</td><td>Denda = Rp 3.000 otomatis</td><td>✅ Berhasil</td></tr>
+    <tr><td>11</td><td>Admin akses URL milik siswa</td><td>/siswa/dashboard</td><td>HTTP 403 Forbidden</td><td>✅ Berhasil</td></tr>
+    <tr><td>12</td><td>Pencarian buku dengan kata kunci</td><td>"Laravel"</td><td>Tampil buku yang mengandung kata "Laravel"</td><td>✅ Berhasil</td></tr>
+    <tr><td>13</td><td>Filter laporan berdasarkan bulan</td><td>Bulan tertentu</td><td>Tampil transaksi bulan tersebut saja</td><td>✅ Berhasil</td></tr>
+    <tr><td>14</td><td>Cetak laporan</td><td>Klik tombol cetak</td><td>Print dialog muncul, sidebar tersembunyi</td><td>✅ Berhasil</td></tr>
+  </tbody>
+</table>
+
+<h3>4.2 Evaluasi Sistem</h3>
+<div class="box green">
+  <strong>✅ Kelebihan Sistem:</strong>
+  <ul>
+    <li>Antarmuka modern, responsif, dan mudah digunakan</li>
+    <li>Validasi data yang komprehensif di sisi server (server-side validation)</li>
+    <li>Sistem denda otomatis mengurangi pekerjaan manual petugas</li>
+    <li>Pemisahan hak akses admin dan siswa yang ketat melalui middleware</li>
+    <li>Pencarian real-time dengan multiple field (judul, pengarang, kode, ISBN)</li>
+    <li>Grafik peminjaman memudahkan monitoring tren penggunaan perpustakaan</li>
+    <li>Fitur cetak laporan langsung dari browser tanpa plugin tambahan</li>
+  </ul>
+</div>
+<div class="box yellow">
+  <strong>⚠️ Keterbatasan & Saran Pengembangan:</strong>
+  <ul>
+    <li>Belum ada fitur notifikasi email / SMS untuk pengingat batas kembali</li>
+    <li>Belum ada fitur barcode scanner untuk input kode buku secara cepat</li>
+    <li>Laporan belum dapat diekspor ke format Excel/PDF secara langsung</li>
+    <li>Belum ada fitur reservasi / antrian buku yang sedang habis</li>
+    <li>Rekomendasi: tambahkan fitur backup database otomatis berkala</li>
+  </ul>
+</div>
+
+<h3>4.3 Kesimpulan</h3>
+<p>
+  Aplikasi Perpustakaan Digital Sekolah berhasil dikembangkan menggunakan framework Laravel dengan
+  memenuhi seluruh kebutuhan fungsional yang ditetapkan dalam soal UKK RPL 2025/2026.
+  Sistem ini mampu melayani dua jenis pengguna (admin dan siswa) dengan hak akses yang berbeda,
+  menyediakan fitur CRUD lengkap untuk pengelolaan data buku, anggota, dan transaksi peminjaman,
+  serta dilengkapi dengan penghitungan denda otomatis dan pelaporan berbasis waktu.
+  Seluruh 14 skenario pengujian fungsional menghasilkan output yang sesuai dengan ekspektasi.
+</p>
+
+<!-- TTD -->
+<div class="sign">
+  <div class="sign-box">
+    <p>Mengetahui,</p>
+    <p>Guru Pembimbing</p>
+    <div class="sign-line">( _________________________ )</div>
+    <p style="font-size:12px;color:#64748b;">NIP. ___________________________</p>
+  </div>
+  <div class="sign-box">
+    <p>________________, ______ 2026</p>
+    <p>Peserta UKK,</p>
+    <div class="sign-line">( _________________________ )</div>
+    <p style="font-size:12px;color:#64748b;">NIS. ___________________________</p>
+  </div>
+</div>
+
+</body>
+</html>
