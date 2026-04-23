@@ -19,7 +19,6 @@ class PengembalianApprovalController extends Controller
         $pendingReturns = Pinjam::with(['user', 'buku'])
             ->where('status', 'dipinjam')
             ->where('status_pengembalian', 'pending')
-            ->where('keterangan', 'like', 'Request pengembalian%')
             ->orderBy('tgl_kembali_rencana', 'asc')
             ->get();
 

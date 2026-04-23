@@ -12,11 +12,14 @@ class PengembalianController extends Controller
 {
     public function index()
     {
-        // Buku yang sedang dipinjam dan BELUM request pengembalian
+        // Buku yang sedang dipinjam dan BELUM request pengembalian (atau request ditolak)
         $pinjams = Pinjam::with('buku')
             ->where('user_id', Auth::id())
             ->where('status', 'dipinjam')
-            ->where('status_pengembalian', 'pending') // Hanya yang belum request
+            ->where(function($q) {
+                $q->whereNull('status_pengembalian')
+                  ->orWhere('status_pengembalian', 'ditolak');
+            })
             ->orderBy('tgl_kembali_rencana', 'asc')
             ->get();
 
@@ -59,11 +62,14 @@ class PengembalianController extends Controller
     {
         $pinjam = Pinjam::where('user_id', Auth::id())
             ->where('status', 'dipinjam')
-            ->where('status_pengembalian', 'pending')
+            ->where(function($q) {
+                $q->whereNull('status_pengembalian')
+                  ->orWhere('status_pengembalian', 'ditolak');
+            })
             ->findOrFail($id);
 
-        // Cek apakah sudah pernah request sebelumnya
-        if ($pinjam->status_pengembalian !== 'pending') {
+        // Cek apakah sudah pernah request sebelumnya (sebenarnya sudah terfilter di where, tapi untuk jaga-jaga)
+        if ($pinjam->status_pengembalian === 'pending') {
             return back()->with('error', 'Anda sudah mengajukan request untuk buku ini.');
         }
 

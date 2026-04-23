@@ -70,13 +70,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::prefix('denda')->name('denda.')->group(function () {
         Route::get('/', [ApproveDendaController::class, 'index'])->name('index');
         Route::post('/{id}/approve', [ApproveDendaController::class, 'approve'])->name('approve');
-        // Route reject dihapus karena tidak ada di ApproveDendaController
-        // ================= APPROVAL DENDA (ADMIN) =================
-Route::prefix('denda')->name('denda.')->group(function () {
-    Route::get('/', [ApproveDendaController::class, 'index'])->name('index');
-    Route::post('/{id}/approve', [ApproveDendaController::class, 'approve'])->name('approve');
-    Route::post('/{id}/reject', [ApproveDendaController::class, 'reject'])->name('reject');
-});
+        Route::post('/{id}/reject', [ApproveDendaController::class, 'reject'])->name('reject');
     });
 
     // ================= APPROVAL PENGEMBALIAN =================
